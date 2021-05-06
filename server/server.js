@@ -2,9 +2,12 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 const request = require('request');
+const cors = require('cors');
+
+app.use(cors());
 
 const routes = router.get('/', (req, res) => {
-    const url = 'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/pokedex.json';
+    const url = 'http://raw.githubusercontent.com/fanzeyi/pokemon.json/master/pokedex.json';
 
     request({ url, json: true }, (err, { body }) => {
         if (err) {
@@ -18,6 +21,6 @@ const routes = router.get('/', (req, res) => {
 
 app.use('/', routes);
 
-app.listen(3000, () => {
+app.listen(5000, () => {
     console.log('server listening on 5000');
 });
