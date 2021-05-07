@@ -10,12 +10,10 @@ function All() {
 
     const nameFilter = (e) => {
         setName(e.target.value);
-        console.log(name)
     };
 
     const typeFilter = (e) => {
         setType(e.target.value);
-        console.log(type)
     };
 
     useEffect(() => {
