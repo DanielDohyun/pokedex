@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './All.scss';
 
 function All() {
     const [pokemon, setPokemon] = useState([]);
@@ -94,17 +95,19 @@ function All() {
                         filtered && filtered.map((item, id) => (
                         <tr key={id}>
                                 <td>
-                                    <img src={`http://img.pokemondb.net/artwork/${item.name.english.toString().toLowerCase()}.jpg`}/>
+                                    <img className='all__img' src={`http://img.pokemondb.net/artwork/${item.name.english.toString().toLowerCase()}.jpg`}/>
                                 {item.id}
                             </td>
-                            <td>{item.name.english}</td>
+                                <td>
+                                    <a className='all__name' href={`http://localhost:3000/${item.name.english}`}>{item.name.english}</a>
+                                </td>
                             {
                                 item.type.length > 1 ?
-                                <div className='all_multipleType'>
-                                    <td>
+                                <div className='all__multipleType'>
+                                    <td className='all__typeOne'>
                                     {item.type[0]}
                                 </td>
-                                <td>
+                                <td className='all__typeTwo'>
                                     {item.type[1]}
                                 </td>
                                 </div>

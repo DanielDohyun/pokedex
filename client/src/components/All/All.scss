@@ -1,0 +1,38 @@
+.all {
+  &__multipleType {
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+    box-sizing: border-box;
+  }
+
+  &__img {
+    height: 30px;
+    padding-left: 10px;
+  }
+
+  &__name {
+    text-decoration: none;
+  }
+
+  &__typeOne,
+  &__typeTwo {
+    border: none;
+  }
+
+  &__typeTwo {
+    border-bottom: 1px solid black;
+  }
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td {
+  height: 40px;
+  box-sizing: border-box;
+}
