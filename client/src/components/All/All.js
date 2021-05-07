@@ -36,7 +36,7 @@ function All() {
         filtered = pokemon.filter(poke => {
             if (poke.name.english.toLowerCase().includes(name.toLowerCase()) && poke.type.includes(type)) {
                 return poke
-            } 
+            } return poke
         })
     } else if (name || type) {
         if (name) {
@@ -49,7 +49,7 @@ function All() {
     } else {
         filtered = pokemon;
     }
-    
+
     return (
         <div className='all'>
             <div className='all__searches'>
@@ -81,7 +81,7 @@ function All() {
             </div>
            
             {
-                pokemon && <BasicTable pokemon={pokemon}/>
+                filtered && <BasicTable filtered={filtered}/>
             }
       
         </div>

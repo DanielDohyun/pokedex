@@ -7,31 +7,6 @@
   &__input {
     margin-right: 10px;
   }
-
-  &__multipleType {
-    display: flex;
-    flex-direction: column;
-    height: 40px;
-    box-sizing: border-box;
-  }
-
-  &__img {
-    height: 30px;
-    padding-left: 10px;
-  }
-
-  &__name {
-    text-decoration: none;
-  }
-
-  &__typeOne,
-  &__typeTwo {
-    border: none;
-  }
-
-  &__typeTwo {
-    border-bottom: 1px solid black;
-  }
 }
 
 table,
