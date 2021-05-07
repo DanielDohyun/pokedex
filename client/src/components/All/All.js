@@ -28,14 +28,33 @@ function All() {
         })
     }, [])
 
+    let filtered = pokemon;
 
+    if (name && type) {
+        filtered = pokemon.filter(poke => {
+            if (poke.name.english.toLowerCase().includes(name.toLowerCase()) && poke.type.includes(type)) {
+                return poke
+            } 
+        })
+    } else if (name || type) {
+        if (name) {
+            filtered = pokemon.filter(poke => {
+                return poke.name.english.toLowerCase().includes(name.toLowerCase());
+            })
+        } else {
+            filtered = pokemon.filter(poke => poke.type.includes(type))
+        }
+    } else {
+        filtered = pokemon;
+    }
+    
     return (
         <div className='all'>
             <label htmlFor="name">Name: </label>
-            <input onChange={e => nameFilter(e)} name='name' type="text"/>
+            <input onChange={(e) => nameFilter(e)} name='name' type="text"/>
 
             <label htmlFor="types">Type: </label>
-            <select onChange={e => typeFilter(e)} name="types" id="types">
+            <select onChange={(e) => typeFilter(e)} name="types" id="types">
                 <option value="Grass">Grass</option>
                 <option value="Poison">Poison</option>
                 <option value="Fire">Fire</option>
@@ -72,10 +91,10 @@ function All() {
                 </tr>
 
                 {
-                        pokemon && pokemon.map((item, id) => (
+                        filtered && filtered.map((item, id) => (
                         <tr key={id}>
                                 <td>
-                                    {/* <img src={`http://img.pokemondb.net/artwork/${item.name.toString().toLowerCase()}.jpg`}/> */}
+                                    <img src={`http://img.pokemondb.net/artwork/${item.name.english.toString().toLowerCase()}.jpg`}/>
                                 {item.id}
                             </td>
                             <td>{item.name.english}</td>
