@@ -8,15 +8,18 @@ function BasicTable(props) {
     const columns = useMemo(() => COLUMNS, []);
     const data = useMemo(() => props.filtered, [props.filtered]);
 
-    const tableInstance = useTable({
-        columns,
-        data
-    });
+    // useTable({
+    //     columns,
+    //     data
+    // });
 
     //built-in fxns and arrs from useTable hook
     const {
         getTableProps, getTableBodyProps, headerGroups, rows, prepareRow,
-    } = tableInstance 
+    } = useTable({
+        columns,
+        data
+    }, useSortBy) 
 
     return (
         <div className='table'>
@@ -27,7 +30,12 @@ function BasicTable(props) {
                             <tr {...header.getHeaderGroupProps()}>
                                 {
                                     header.headers.map(column => (
-                                        <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                                        <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                                            {column.render('Header')}
+                                            <span>
+                                                {column.isSorted ? (column.isSortedDesc ? '▾' : '▴') : ''}
+                                            </span>
+                                        </th>
                                     ))
                                 }
                             </tr>
