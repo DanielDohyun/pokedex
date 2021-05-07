@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react'
-import { useTable, useSortBy } from 'react-table';
+import { useTable, useSortBy, usePagination } from 'react-table';
 import { COLUMNS } from './Columns';
 
 function BasicTable(props) {
@@ -8,18 +8,13 @@ function BasicTable(props) {
     const columns = useMemo(() => COLUMNS, []);
     const data = useMemo(() => props.filtered, [props.filtered]);
 
-    // useTable({
-    //     columns,
-    //     data
-    // });
-
-    //built-in fxns and arrs from useTable hook
+    //built-in fxns from the useTable instances
     const {
-        getTableProps, getTableBodyProps, headerGroups, rows, prepareRow,
+        getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, page, nextPage, previousPage
     } = useTable({
         columns,
         data
-    }, useSortBy) 
+    }, useSortBy, usePagination) 
 
     return (
         <div className='table'>
@@ -46,7 +41,7 @@ function BasicTable(props) {
 
                 <tbody {...getTableBodyProps()}>
                     {
-                        rows.map(row => {
+                        page.map(row => {
                             prepareRow(row)
                             return (
                                 <tr {...row.getRowProps()}>
@@ -70,8 +65,12 @@ function BasicTable(props) {
                     
                 </tbody>
             </table>
+
+            <div style={{textAlign: 'center', marginTop: '10px'}}>
+                <button onClick={() => previousPage()}>Previous</button>
+                <button onClick={() => nextPage()}>Next</button>
+            </div>
         </div>
-        
     )
 }
 

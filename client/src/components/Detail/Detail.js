@@ -30,10 +30,14 @@ function Detail(props) {
                     <h2>Pokedex data</h2>
                         
                     <p>National No: <span>{detail[0]?.id}</span></p>
-                    <p>Type: <span>{detail[0]?.type}</span></p>
+                    {
+                        detail[0]?.type.length > 1 ?
+                            <p>Type: <span>{detail[0]?.type[0]},   </span><span>{detail[0]?.type[1]}</span> </p>
+                        : 
+                            <p>Type: <span>{detail[0]?.type}</span></p>
+                }
                 
                     <h2>Base stats</h2>
-
                     <p>HP: <span>{detail[0]?.base.HP}</span></p>
                     <p>ATTACK: <span>{detail[0]?.base.Attack}</span></p>
                     <p>DEFENSE: <span>{detail[0]?.base.Defense}</span></p>
@@ -41,7 +45,6 @@ function Detail(props) {
                     <p>Total: <span className='detail__total'>{detail[0]?.base.HP + detail[0]?.base.Attack + detail[0]?.base.Defense + detail[0]?.base.Speed + detail[0]?.base.HP }</span></p> 
                 </>
             }
-                
         </div>
     )
 }
