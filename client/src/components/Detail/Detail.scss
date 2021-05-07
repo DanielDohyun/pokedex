@@ -1,0 +1,23 @@
+.detail {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  text-align: center;
+
+  &__img {
+    height: 200px;
+    width: 200px;
+  }
+
+  &__total {
+    font-weight: 600;
+  }
+}
+
+p {
+  color: #737373;
+}
+
+span {
+  color: black;
+}

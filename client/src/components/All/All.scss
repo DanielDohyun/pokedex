@@ -1,4 +1,13 @@
 .all {
+  &__searches {
+    margin: 16px auto;
+    text-align: center;
+  }
+
+  &__input {
+    margin-right: 10px;
+  }
+
   &__multipleType {
     display: flex;
     flex-direction: column;
@@ -30,9 +39,25 @@ th,
 td {
   border: 1px solid black;
   border-collapse: collapse;
+  margin: 0 auto;
 }
 
 td {
   height: 40px;
   box-sizing: border-box;
+  min-width: 80px;
+  text-align: center;
+}
+
+select,
+input {
+  border-radius: 2px;
+  border: 1px solid #dbdbdb;
+  vertical-align: middle;
+  padding: 0.3rem 0.55rem;
+}
+
+select:active,
+select:focus {
+  border: none;
 }

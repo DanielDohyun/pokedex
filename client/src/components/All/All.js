@@ -51,8 +51,9 @@ function All() {
     
     return (
         <div className='all'>
+            <div className='all__searches'>
             <label htmlFor="name">Name: </label>
-            <input onChange={(e) => nameFilter(e)} name='name' type="text"/>
+            <input className='all__input' onChange={(e) => nameFilter(e)} name='name' type="text"/>
 
             <label htmlFor="types">Type: </label>
             <select onChange={(e) => typeFilter(e)} name="types" id="types">
@@ -75,6 +76,8 @@ function All() {
                 <option value="Dragon">Dragon</option>
                 <option value="Dark">Dark</option>
             </select>
+            </div>
+           
             
             <table>
                 <tbody>
